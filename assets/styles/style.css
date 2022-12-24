@@ -252,6 +252,7 @@ table, tr, th, td {
 
 .table-info {
     --bs-table-bg: #cff4fcb1;
+    width: 90%;
 }
 
 .main-title-form {
