@@ -79,9 +79,9 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-image: url(../images/fiesta.jpg);
-    background-size: cover;
-    background-position: bottom;
+    background-image: url(../images/splash.jpg);
+    background-size: contain;
+    background-position: center;
     min-height: 100vh;
     gap: 4vh;
     padding-bottom: 4vh;
@@ -277,7 +277,14 @@ table, tr, th, td {
     .formulario {
         width: 40%;
     }
+
+    main {
+        background-image: url(../images/fiesta.jpg);
+        background-size: cover;
+        background-position: bottom;
+    }
 }
+
 
 @media (min-width: 1024px) and (max-width: 1440px){
     .card {
