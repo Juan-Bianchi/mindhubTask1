@@ -20,6 +20,7 @@ h2 {
     font-family: sugarSnow;
     color: white;
     margin: 0;
+    font-size:200%;
 }
 
 p {
@@ -29,6 +30,7 @@ p {
 
 .btn-outline-light {
     --bs-btn-hover-bg: #4635dc;
+    --bs-btn-hover-color: white;
 }
 
 header {
@@ -274,14 +276,9 @@ table, tr, th, td {
 
 .card-giant {
     background-color: rgba(255, 255, 255, 0.837);
-    align-items: center;
     padding-bottom: 3vh;
     padding-top: 3vh;
     border: solid 3px #0dcaf0;
-}
-
-.card-giant img {
-    aspect-ratio: 1 / 0.65;
 }
 
 .card-title {
@@ -296,7 +293,7 @@ table, tr, th, td {
 }
 
 .foto-descripcion {
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .container-img-giant {
@@ -332,6 +329,10 @@ table, tr, th, td {
 
 
 @media (min-width: 1024px) and (max-width: 1440px){
+    .filtro-categorias {
+        flex-direction: row;  
+    }
+
     .card-medium {
         width: 15rem;
     }
