@@ -284,7 +284,6 @@ table, tr, th, td {
 .card-title {
     color: #08829a;
     font-weight: bold;
-    padding-bottom: 3vh;
 }
 
 .span-giant {
@@ -323,7 +322,6 @@ table, tr, th, td {
 
     .btn-fondo-blanco {
         --bs-btn-color: black;
-
     }
 }
 
@@ -340,12 +338,33 @@ table, tr, th, td {
 
 @media (min-width: 1440px){
 
+    main, .btn-fondo-blanco {
+        font-size: 120%;
+    }
+
+    .nav-link {
+        font-size: 160% !important;
+    }
+
     .filtro-categorias {
         flex-direction: row;  
     }
 
     .card-medium {
-        width: 18rem;
+        width: 20rem;
+    }
+
+    h1{
+        font-size: 200%;
+    }
+
+    h5 {
+        font-size: 120%;
+        padding-bottom: 1vh;
+    }
+
+    .btn-outline-light {
+        font-size: 105%;
     }
 }
 
