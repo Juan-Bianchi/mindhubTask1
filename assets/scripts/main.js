@@ -1,4 +1,4 @@
-const datos = Object.assign({}, data);;
+const datos = Object.assign({}, data);
 
 function createCard (carta) {
     return (`<article class="card card-medium col-10 col-lg-3 col-md-5 justify-content-center ">
@@ -49,6 +49,8 @@ function filtraEventosFuturos (listaEventos, fechaReferencia) {
 let todosLosEventos = cargaTodosLosEventos(datos.events);
 let pastEvents = filtraEventosPasados(datos.events, datos.currentDate);
 let upcomingEvents = filtraEventosFuturos(datos.events, datos.currentDate);
+
+todosLosEventos = todosLosEventos.toString();
 
 console.log(todosLosEventos);
 console.log(pastEvents);
