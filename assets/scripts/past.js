@@ -15,21 +15,17 @@ function createCard (carta) {
 }
 
 
-function cargaTodosLosEventos (listaEventos) {
-   
-    let listaTerminada = []
+function filtraEventosPasados (listaEventos, fechaReferencia) {
+    let listaTerminada = [];
+
     for(evento of listaEventos) {
-        listaTerminada.push(createCard(evento));
+        if(fechaReferencia < evento.date ) {
+            listaTerminada.push(createCard(evento));
+        }
     }
     return listaTerminada;
 }
 
-
-
-
-let todosLosEventos = cargaTodosLosEventos(datos.events);
-todosLosEventos = todosLosEventos.toString();
-console.log(todosLosEventos);
-
-
-
+let pastEvents = filtraEventosPasados(datos.events, datos.currentDate);
+pastEvents = pastEvents.toString();
+console.log(pastEvents);
