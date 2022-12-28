@@ -1,31 +1,28 @@
 const datos = Object.assign({}, data);
+const cardContainer = document.querySelector(".card-container");
 
-function createCard (carta) {
-    return (`<article class="card card-medium col-10 col-lg-3 col-md-5 justify-content-center ">
-                <img ${carta.image} class="card-img-top" alt="avengers" title="avengers">
+function createCard (card, container) {
+    container.innerHTML += `<article class="card card-medium col-10 col-lg-3 col-md-5 justify-content-center ">
+                <img src="${card.image}" class="card-img-top" alt="avengers" title="avengers">
                 <div class="card-body">
-                    <h5 class="card-title">${carta.name}</h5>
-                    <p class="card-text">${carta.description}</p>
+                    <h5 class="card-title">${card.name}</h5>
+                    <p class="card-text">${card.description}</p>
                     <div>
-                        <p class="card-text">Price: $${carta.price}</p>
+                        <p class="card-text">Price: $${card.price}</p>
                         <a href="./details.html" class="btn btn-outline-light btn-info">See More</a>
                     </div>
                 </div>
-            </article>`);
+            </article>`;
 }
 
 
-function filtraEventosPasados (listaEventos, fechaReferencia) {
-    let listaTerminada = [];
+function filterPastEvents (datos, container) {
 
-    for(evento of listaEventos) {
-        if(fechaReferencia < evento.date ) {
-            listaTerminada.push(createCard(evento));
+    for(let event of datos.events) {
+        if(datos.currentDate > event.date ) {
+            createCard(event, container);
         }
     }
-    return listaTerminada;
 }
 
-let pastEvents = filtraEventosPasados(datos.events, datos.currentDate);
-pastEvents = pastEvents.toString();
-console.log(pastEvents);
+filterPastEvents(datos, cardContainer)
