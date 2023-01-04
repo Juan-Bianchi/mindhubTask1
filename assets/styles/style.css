@@ -23,6 +23,12 @@ h2 {
     font-size:200%;
 }
 
+#noResults {
+    background-color: rgba(0, 0, 0, 0.375);
+    width: 60%;
+}
+
+
 p {
     margin-bottom: 0;
 }

@@ -30,8 +30,7 @@ searchContainer.addEventListener('input', performDoubleFilter);
 
 function filterByInput (listEvent) {
     const eventsFilteredByName = listEvent.filter(event => event.name.toLowerCase().includes(searchContainer.value.toLowerCase()));
-  
-    
+   
     return eventsFilteredByName;
 }
 
@@ -76,8 +75,6 @@ function renderizeCards (cardList) {
                         </div>
                     </article>`;
         })
-
-        console.log(template)
 
     return template;    
 }
