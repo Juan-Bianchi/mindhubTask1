@@ -13,35 +13,36 @@ function createTemplate ( event ) {
                         </div>
                         <div class="col-12 col-md-5">
                             <div class="card-body card-body-giant">
-                            <h5 class="card-title">${event.name}</h5>
-                            <p class="card-text">${event.description}</p>
-                            <p>
-                                <span class="span-giant">Category : </span>
-                                ${event.name}
-                            </p>
-                            <p>
-                                <span class="span-giant">Place : </span>
-                                ${event.place}
-                            </p>
-                            <p>
-                                <span class="span-giant">Capacity : </span>
-                                ${event.capacity}
-                            </p>
-                            <p>
-                                <span class="span-giant">Assistance : </span>
-                                ${event.assistance}
-                            </p>
-                            <p>
-                                <span class="span-giant">Price : </span>
-                                $${event.price}
-                            </p>
+                                <h5 class="card-title">${event.name}</h5>
+                                <p class="card-text">${event.description}</p>
+                                <p>
+                                    <span class="span-giant">Category : </span>
+                                    ${event.name}
+                                </p>
+                                <p>
+                                    <span class="span-giant">Place : </span>
+                                    ${event.place}
+                                </p>
+                                <p>
+                                    <span class="span-giant">Capacity : </span>
+                                    ${event.capacity}
+                                </p>
+                                <p>
+                                    <span class="span-giant">${ event.assistance? `Assistance`: `Estimate`} : </span>
+                                    ${ event.assistance? event.assistance: event.estimate }
+                                </p>
+                                <p>
+                                    <span class="span-giant">Date : </span>
+                                    ${event.date}
+                                </p>
                             </div>
                         </div>                 
                  </div>`
                     
-
     return template;
 }
+
+
 
 let card = createTemplate(eventFound);
 

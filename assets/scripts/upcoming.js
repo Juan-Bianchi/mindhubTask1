@@ -85,13 +85,13 @@ function renderizeCards (cardList) {
     let template ="";
      cardList.forEach(card => {
         template +=`<article class="card card-medium col-10 col-lg-3 col-md-5 justify-content-center ">
-                        <img src= "${card.image}" class="card-img-top" alt="avengers" title="avengers">
+                        <img src= "${card.image}" class="card-img-top" alt="events" title="events">
                         <div class="card-body">
                             <h5 class="card-title">${card.name}</h5>
                             <p class="card-text">${card.description}</p>
                             <div>
                                 <p class="card-text">Price: $${card.price}</p>
-                                <a href="./details.html" class="btn btn-outline-light btn-info">See More</a>
+                                <a href="./details.html?id=${card._id}" class="btn btn-outline-light btn-info">See More</a>
                             </div>
                         </div>
                     </article>`;

@@ -57,12 +57,7 @@ function filterByCategory (eventList) {
 
     const activeCategories = activeChecks.map(check => check.name.toLowerCase());
     
-    if(activeCategories.length) {
-        return eventList.filter(event => activeCategories.includes(event.category.toLowerCase()));
-      
-    }
- 
-    return eventList;
+    return activeCategories.length ?  eventList.filter(event => activeCategories.includes(event.category.toLowerCase())) : eventList;
 }
 
 

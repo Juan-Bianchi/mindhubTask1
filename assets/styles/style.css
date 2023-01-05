@@ -114,10 +114,13 @@ main {
     gap: 1vh;
 }
 
+#searchField {
+    width: 35vw;
+}
+
 .checks {
     display: flex;
     justify-content: space-evenly;
-    align-items: space-evenly;
     flex-wrap: wrap;
     gap: 1vw;
 }
