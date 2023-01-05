@@ -4,6 +4,8 @@ const checksContainer = document.querySelector(".checks")
 const searchContainer = document.getElementById("searchField");
 
 
+
+
 //CREO LOS CHECKBOX CON LAS CATEGORIAS
 
 function createCategoryList ( events ) {
@@ -15,13 +17,17 @@ function createCategoryList ( events ) {
 
 function renderizeChecks ( events, createList,  where ) {
     const checkBoxList = createList(events);
-    
-    checkBoxList.forEach(categ => {
-        where.innerHTML += `<input type="checkbox" class="btn-check" id="${categ}">
-                            <label class="btn btn-fondo-blanco" for="${categ}">${categ}</label>`;
+
+    checkBoxList.forEach((categ, index) => {
+        where.innerHTML += `<input type="checkbox" class="btn-check" id="check${index}" name="${categ}">
+                            <label class="btn btn-fondo-blanco" for="check${index}">${categ}</label>`;
         
     });
 }
+
+renderizeChecks(completeData.events, createCategoryList, checksContainer);
+
+
 
 
 //FILTRO SEARCH INPUT
@@ -36,16 +42,20 @@ function filterByInput (listEvent) {
 
 
 
+
 //FILTRO CHECKBOX
 
 checksContainer.addEventListener('change', performDoubleFilter);
+
+
 
 function filterByCategory (eventList) {
     let activeChecks = document.querySelectorAll( 'input[type="checkbox"]:checked');
 
     activeChecks = Array.from(activeChecks);
+    console.log([activeChecks])
 
-    const activeCategories = activeChecks.map(check => check.id.toLowerCase());
+    const activeCategories = activeChecks.map(check => check.name.toLowerCase());
     
     if(activeCategories.length) {
         return eventList.filter(event => activeCategories.includes(event.category.toLowerCase()));
@@ -56,21 +66,22 @@ function filterByCategory (eventList) {
 }
 
 
-//RENDERIZO CARTAS
 
+
+//RENDERIZO CARTAS
 
 function renderizeCards (cardList) {
 
     let template ="";
      cardList.forEach(card => {
         template +=`<article class="card card-medium col-10 col-lg-3 col-md-5 justify-content-center ">
-                        <img src= "${card.image}" class="card-img-top" alt="avengers" title="avengers">
+                        <img src= "${card.image}" class="card-img-top" alt="event" title="event">
                         <div class="card-body">
                             <h5 class="card-title">${card.name}</h5>
                             <p class="card-text">${card.description}</p>
                             <div>
                                 <p class="card-text">Price: $${card.price}</p>
-                                <a href="./details.html" class="btn btn-outline-light btn-info">See More</a>
+                                <a href="./details.html?id=${card._id}" class="btn btn-outline-light btn-info">See More</a>
                             </div>
                         </div>
                     </article>`;
@@ -78,10 +89,11 @@ function renderizeCards (cardList) {
 
     return template;    
 }
-            
-//HAGO DOBLE FILTRO
+           
 
-renderizeChecks(completeData.events, createCategoryList, checksContainer);
+
+
+//HAGO DOBLE FILTRO
 
 function performDoubleFilter ( ) {
     const categoryFilteredList = filterByCategory(completeData.events);

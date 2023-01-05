@@ -4,8 +4,9 @@ const checksContainer = document.querySelector(".checks")
 const searchContainer = document.getElementById("searchField");
 
 
-//FILTRO POR FECHA
 
+
+//FILTRO POR FECHA
 
 function filterPastEvents (compData) {
 
@@ -13,6 +14,8 @@ function filterPastEvents (compData) {
 }
 
 const filteredPastEvents = filterPastEvents(completeData)
+
+
 
 
 //CREO LOS CHECKBOX CON LAS CATEGORIAS
@@ -27,14 +30,16 @@ function createCategoryList ( events ) {
 function renderizeChecks ( events, createList,  where ) {
     const checkBoxList = createList(events);
     
-    checkBoxList.forEach(categ => {
-        where.innerHTML += `<input type="checkbox" class="btn-check" id="${categ}">
-                            <label class="btn btn-fondo-blanco" for="${categ}">${categ}</label>`;
+    checkBoxList.forEach((categ, index) => {
+        where.innerHTML += `<input type="checkbox" class="btn-check" id="check${index}" name="${categ}">
+                            <label class="btn btn-fondo-blanco" for="check${index}">${categ}</label>`;
         
     });
 }
 
 renderizeChecks(filteredPastEvents, createCategoryList, checksContainer);
+
+
 
 
 //FILTRO SEARCH INPUT
@@ -49,6 +54,7 @@ function filterByInput (listEvent) {
 
 
 
+
 //FILTRO CHECKBOX
 
 checksContainer.addEventListener('change', performDoubleFilter);
@@ -58,8 +64,8 @@ function filterByCategory (eventList) {
 
     activeChecks = Array.from(activeChecks);
 
-    const activeCategories = activeChecks.map(check => check.id.toLowerCase());
-    
+    const activeCategories = activeChecks.map(check => check.name.toLowerCase());
+
     if(activeCategories.length) {
         return eventList.filter(event => activeCategories.includes(event.category.toLowerCase()));
       
@@ -69,8 +75,9 @@ function filterByCategory (eventList) {
 }
 
 
-//RENDERIZO CARTAS
 
+
+//RENDERIZO CARTAS
 
 function renderizeCards (cardList) {
 
@@ -93,8 +100,9 @@ function renderizeCards (cardList) {
 }
           
 
-//HAGO DOBLE FILTRO
 
+
+//HAGO DOBLE FILTRO
 
 function performDoubleFilter ( ) {
     const categoryFilteredList = filterByCategory(filteredPastEvents);
