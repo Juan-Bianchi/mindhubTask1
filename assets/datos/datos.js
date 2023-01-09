@@ -50,7 +50,7 @@ const data = {
       "place": "Paris",
       "capacity": 8200,
       "estimate": 8200,
-      "price": 350,
+      "price": 3500,
       "__v": 0
     },
     {

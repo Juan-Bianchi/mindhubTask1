@@ -1,7 +1,16 @@
-const completeData = Object.assign({}, data);
 const cardContainer = document.querySelector(".card-container");
 const checksContainer = document.querySelector(".checks")
 const searchContainer = document.getElementById("searchField");
+
+let dataFromApi; 
+
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then(resolve => resolve.json())
+    .then(dataAPI => {
+        dataFromApi = dataAPI;
+        manageDataAPI()
+    })
+    .catch(err => console.error(err.message));
 
 
 
@@ -25,14 +34,10 @@ function renderizeChecks ( events, createList,  where ) {
     });
 }
 
-renderizeChecks(completeData.events, createCategoryList, checksContainer);
-
 
 
 
 //FILTRO SEARCH INPUT
-
-searchContainer.addEventListener('input', performDoubleFilter);
 
 function filterByInput (listEvent) {
     const eventsFilteredByName = listEvent.filter(event => event.name.toLowerCase().includes(searchContainer.value.toLowerCase()));
@@ -45,15 +50,10 @@ function filterByInput (listEvent) {
 
 //FILTRO CHECKBOX
 
-checksContainer.addEventListener('change', performDoubleFilter);
-
-
-
 function filterByCategory (eventList) {
     let activeChecks = document.querySelectorAll( 'input[type="checkbox"]:checked');
 
     activeChecks = Array.from(activeChecks);
-    console.log([activeChecks])
 
     const activeCategories = activeChecks.map(check => check.name.toLowerCase());
     
@@ -90,8 +90,8 @@ function renderizeCards (cardList) {
 
 //HAGO DOBLE FILTRO
 
-function performDoubleFilter ( ) {
-    const categoryFilteredList = filterByCategory(completeData.events);
+function performDoubleFilter () {
+    const categoryFilteredList = filterByCategory(dataFromApi.events);
     const checkedFilteredList = filterByInput(categoryFilteredList);
     let template = "";
 
@@ -105,6 +105,12 @@ function performDoubleFilter ( ) {
     cardContainer.innerHTML = template;
 }
 
-performDoubleFilter();
+function manageDataAPI () {
+    renderizeChecks(dataFromApi.events, createCategoryList, checksContainer);
+    searchContainer.addEventListener('input', performDoubleFilter);
+    checksContainer.addEventListener('change', performDoubleFilter);
+
+    performDoubleFilter();
+}
 
 

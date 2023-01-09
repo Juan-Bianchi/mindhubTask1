@@ -61,18 +61,15 @@
                     <tr class="table-info titulo-tabla">
                         <th colspan = "3" class="main-title-form">Events statistics</th>
                     </tr>
-                    
+                    <tr class="table-info">
+                        <th class="titulo-secundario">Events with the higest percentage of attendance</th>
+                        <th class="titulo-secundario">Events with the lowest percentage of attendance</th>
+                        <th class="titulo-secundario">Event with larger capacity</th>
+                    </tr>                   
                   </thead>
-                  <tbody>
-                        <tr class="table-info">
-                            <th class="titulo-secundario">Events with the higest percentage of attendance</th>
-                            <th class="titulo-secundario">Events with the lowest percentage of attendance</th>
-                            <th class="titulo-secundario">Event with larger capacity</th>
-                        </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                  <tbody>  
+                        <tr class="table-info" id="highest-lowest">
+                            
                         </tr>
                   </tbody>
                 </table>
@@ -82,30 +79,16 @@
                     </colgroup>
                     <thead>
                       <tr class="table-info">
-                          <th colspan = "3" class="main-title-form">Upcoming events statistics by category</th>
+                            <th colspan = "3" class="main-title-form">Upcoming events statistics by category</th>
                       </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="table-info">
+                      <tr class="table-info">
                             <th class="titulo-secundario">Categories</th>
                             <th class="titulo-secundario">Revenues</th>
-                            <th class="titulo-secundario">Percetage of attendance</th>
-                        </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                            <th class="titulo-secundario">Percentage of attendance</th>
+                      </tr>
+                    </thead>
+                    <tbody id="upcoming-stats">
+                        
                     </tbody>
                 </table>
                 <table class="table titulo-tabla">
@@ -113,41 +96,17 @@
                         <col span="3">
                     </colgroup>
                     <thead>
-                      <tr class="table-info">
-                          <th colspan = "3" class="main-title-form">Past events statistics by category</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                        <tr class="table-info">
+                            <th colspan = "3" class="main-title-form">Past events statistics by category</th>
+                        </tr>
                         <tr class="table-info">
                             <th class="titulo-secundario">Categories</th>
                             <th class="titulo-secundario">Revenues</th>
-                            <th class="titulo-secundario">Percetage of attendance</th>
+                            <th class="titulo-secundario">Percentage of attendance</th>
                         </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="table-info">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                    </thead>
+                    <tbody id="past-stats">
+                        
                     </tbody>
                 </table>
              </div>
@@ -167,5 +126,6 @@
         </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="./assets/scripts/stats.js"></script>
     </body>
 </html>

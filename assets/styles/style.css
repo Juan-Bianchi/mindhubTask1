@@ -257,22 +257,25 @@ table, tr, th, td {
     border-collapse: collapse;
 }
 
+td,th {
+    width: 33%;
+    text-align: center;
+}
+
 .table {
     margin-bottom: 0;
 }
 
 .table-info {
-    --bs-table-bg: #cff4fcb1;
+    --bs-table-bg: #cff4fcd4;
     width: 90%;
 }
 
 .main-title-form {
     background-color: #0e93ae !important;
+    font-size: x-large;
 }
 
-.titulo-secundario {
-    font-weight:400;
-}
 
 /*/////////////////////////////////////////////////////DETAILS/////////////////////////////////////////////////////////////////*/
 
