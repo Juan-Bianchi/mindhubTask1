@@ -204,6 +204,7 @@ main {
 
 footer {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     background-color: #0dcaf0;
@@ -219,6 +220,12 @@ footer {
 
 .img-redes {
     width: 3em;
+}
+
+.footer1 {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
 

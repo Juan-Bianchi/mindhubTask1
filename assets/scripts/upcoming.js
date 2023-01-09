@@ -10,7 +10,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing')
         dataFromApi = filterFutureEvents(dataAPI);
         manageDataAPI();
     })
-
+    .catch( err => console.error(err.message));
 
 //FILTRO POR FECHA
 
