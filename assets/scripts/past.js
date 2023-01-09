@@ -1,9 +1,18 @@
-const completeData = Object.assign({}, data);
 const cardContainer = document.querySelector(".card-container");
 const checksContainer = document.querySelector(".checks")
 const searchContainer = document.getElementById("searchField");
 
+let dataFromApi;
 
+
+//TRAIGO DATOS CON EL FETCH
+
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then(resolve => resolve.json())
+    .then(dataAPI => {
+        dataFromApi = filterPastEvents(dataAPI);
+        manageDataAPI()
+    })
 
 
 //FILTRO POR FECHA
@@ -12,8 +21,6 @@ function filterPastEvents (compData) {
 
     return compData.events.filter(event => compData.currentDate > event.date);
 }
-
-const filteredPastEvents = filterPastEvents(completeData)
 
 
 
@@ -37,14 +44,10 @@ function renderizeChecks ( events, createList,  where ) {
     });
 }
 
-renderizeChecks(filteredPastEvents, createCategoryList, checksContainer);
-
 
 
 
 //FILTRO SEARCH INPUT
-
-searchContainer.addEventListener('input', performDoubleFilter);
 
 function filterByInput (listEvent) {
     const eventsFilteredByName = listEvent.filter(event => event.name.toLowerCase().includes(searchContainer.value.toLowerCase()));
@@ -56,8 +59,6 @@ function filterByInput (listEvent) {
 
 
 //FILTRO CHECKBOX
-
-checksContainer.addEventListener('change', performDoubleFilter);
 
 function filterByCategory (eventList) {
     let activeChecks = document.querySelectorAll( 'input[type="checkbox"]:checked');
@@ -105,7 +106,7 @@ function renderizeCards (cardList) {
 //HAGO DOBLE FILTRO
 
 function performDoubleFilter ( ) {
-    const categoryFilteredList = filterByCategory(filteredPastEvents);
+    const categoryFilteredList = filterByCategory(dataFromApi);
     const checkedFilteredList = filterByInput(categoryFilteredList);
     let template = "";
     
@@ -120,5 +121,14 @@ function performDoubleFilter ( ) {
     cardContainer.innerHTML = template;
 }
 
-performDoubleFilter();
+//FUNCION DEL FETCH
 
+function manageDataAPI() {
+    //creo checks
+    renderizeChecks(dataFromApi, createCategoryList, checksContainer);
+    //escucho sucesos
+    searchContainer.addEventListener('input', performDoubleFilter);
+    checksContainer.addEventListener('change', performDoubleFilter);
+
+    performDoubleFilter();
+}

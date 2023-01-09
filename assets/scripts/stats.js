@@ -130,6 +130,3 @@ function manageDataApi (dataApi) {
     renderStatisticsByCateg(upcomingStats, upcomingContainer);
 
 }
-
-
-

@@ -4,7 +4,24 @@ let id = parameters.get("id");
 
 const giantCardConatiner = document.getElementById('cardGiant');
 
-let eventFound = data.events.find(event => event._id === id);
+let eventFound;
+
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then( resolve => resolve.json() )
+    .then( dataAPI => {
+        eventFound = dataAPI.events.find(event => event._id === id);
+        let card = createTemplate(eventFound);
+
+        let article = document.createElement("article");
+        article.className = 'card mb-3 card-giant col-10 justify-content-center';
+        article.innerHTML = card;
+
+        giantCardConatiner.innerHTML = "";
+
+        giantCardConatiner.appendChild(article)
+    })
+    .catch( err => console.error(err.message));
+
 
 function createTemplate ( event ) {
     let template = `<div class="row g-0 foto-descripcion">
@@ -41,16 +58,4 @@ function createTemplate ( event ) {
                     
     return template;
 }
-
-
-
-let card = createTemplate(eventFound);
-
-let article = document.createElement("article");
-article.className = 'card mb-3 card-giant col-10 justify-content-center';
-article.innerHTML = card;
-
-giantCardConatiner.innerHTML = "";
-
-giantCardConatiner.appendChild(article)
 

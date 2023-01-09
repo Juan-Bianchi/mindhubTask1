@@ -1,9 +1,15 @@
-const completeData = Object.assign({}, data);
 const cardContainer = document.querySelector(".card-container");
 const checksContainer = document.querySelector(".checks")
 const searchContainer = document.getElementById("searchField");
 
+let dataFromApi;
 
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then( resolve => resolve.json() )
+    .then( dataAPI => {
+        dataFromApi = filterFutureEvents(dataAPI);
+        manageDataAPI();
+    })
 
 
 //FILTRO POR FECHA
@@ -12,9 +18,6 @@ function filterFutureEvents (compData) {
 
     return compData.events.filter(event => compData.currentDate <= event.date);
 }
-
-const filteredFutureEvents = filterFutureEvents(completeData)
-
 
 
 
@@ -37,14 +40,11 @@ function renderizeChecks ( events, createList,  where ) {
     });
 }
 
-renderizeChecks(filteredFutureEvents, createCategoryList, checksContainer);
 
 
 
 
 //FILTRO SEARCH INPUT
-
-searchContainer.addEventListener('input', performDoubleFilter);
 
 function filterByInput (listEvent) {
     const eventsFilteredByName = listEvent.filter(event => event.name.toLowerCase().includes(searchContainer.value.toLowerCase()));
@@ -57,8 +57,6 @@ function filterByInput (listEvent) {
 
 
 //FILTRO CHECKBOX
-
-checksContainer.addEventListener('change', performDoubleFilter);
 
 function filterByCategory (eventList) {
     let activeChecks = document.querySelectorAll( 'input[type="checkbox"]:checked');
@@ -107,7 +105,7 @@ function renderizeCards (cardList) {
 //HAGO DOBLE FILTRO
 
 function performDoubleFilter ( ) {
-    const categoryFilteredList = filterByCategory(filteredFutureEvents);
+    const categoryFilteredList = filterByCategory(dataFromApi);
     const checkedFilteredList = filterByInput(categoryFilteredList);
     let template = "";
 
@@ -121,4 +119,14 @@ function performDoubleFilter ( ) {
     cardContainer.innerHTML = template;
 }
 
-performDoubleFilter();
+
+//FUNCION DEL FETCH
+
+function manageDataAPI (){
+    renderizeChecks(dataFromApi, createCategoryList, checksContainer);
+    searchContainer.addEventListener('input', performDoubleFilter);
+    checksContainer.addEventListener('change', performDoubleFilter);
+
+    performDoubleFilter();
+}
+

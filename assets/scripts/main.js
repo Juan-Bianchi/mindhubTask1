@@ -2,6 +2,8 @@ const cardContainer = document.querySelector(".card-container");
 const checksContainer = document.querySelector(".checks")
 const searchContainer = document.getElementById("searchField");
 
+//TRAIGO DATOS CON EL FETCH
+
 let dataFromApi; 
 
 fetch('https://mindhub-xj03.onrender.com/api/amazing')
@@ -104,6 +106,8 @@ function performDoubleFilter () {
     
     cardContainer.innerHTML = template;
 }
+
+
 
 function manageDataAPI () {
     renderizeChecks(dataFromApi.events, createCategoryList, checksContainer);
