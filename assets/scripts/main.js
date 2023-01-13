@@ -2,6 +2,41 @@ const cardContainer = document.querySelector(".card-container");
 const checksContainer = document.querySelector(".checks")
 const searchContainer = document.getElementById("searchField");
 
+//CARGO LOADER
+
+(function() {
+
+    cardContainer.innerHTML = `<div>
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <div class="spinner-grow text-primary mx-auto" role ="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>`
+}) ();
+
+
 //TRAIGO DATOS CON EL FETCH
 
 let dataFromApi; 
@@ -34,6 +69,8 @@ function renderizeChecks ( events, createList,  where ) {
                             <label class="btn btn-fondo-blanco" for="check${index}">${categ}</label>`;
         
     });
+
+
 }
 
 
