@@ -61,8 +61,8 @@ function obtainStatistics( events ) {
         return {
             category : `${categ}`,
             revenue : 0,
-            attend : 0,
-            capacity: 0
+            percentage: 0,
+            eventCounter: 0
         };
     })
 
@@ -70,8 +70,8 @@ function obtainStatistics( events ) {
         for(let categ of categObjects) {
             if(categ.category === event.category) {
                 categ.revenue += Math.round((event.assistance ? event.assistance: event.estimate) * event.price);
-                categ.attend += (event.assistance ? event.assistance: event.estimate);
-                categ.capacity += event.capacity;
+                categ.percentage += (event.assistance ? event.assistance: event.estimate) / event.capacity * 100;
+                categ.eventCounter ++;
             }
         }
     }
@@ -80,7 +80,7 @@ function obtainStatistics( events ) {
         return {
             name : `${cat.category}`,
             revenue : cat.revenue,
-            percAttend : (cat.attend / cat.capacity * 100).toFixed(2)
+            percAttend : (cat.percentage / cat.eventCounter).toFixed(2)
         };
     });
 
