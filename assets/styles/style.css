@@ -20,7 +20,14 @@ h2 {
     font-family: sugarSnow;
     color: white;
     margin: 0;
+    font-size:200%;
 }
+
+#noResults {
+    background-color: rgba(0, 0, 0, 0.375);
+    width: 60%;
+}
+
 
 p {
     margin-bottom: 0;
@@ -29,6 +36,7 @@ p {
 
 .btn-outline-light {
     --bs-btn-hover-bg: #4635dc;
+    --bs-btn-hover-color: white;
 }
 
 header {
@@ -79,7 +87,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-image: url(../images/fiesta.jpg);
+    background-image: url(../images/colores.jpg);
     background-size: cover;
     background-position: bottom;
     min-height: 100vh;
@@ -106,10 +114,13 @@ main {
     gap: 1vh;
 }
 
+#searchField {
+    width: 35vw;
+}
+
 .checks {
     display: flex;
     justify-content: space-evenly;
-    align-items: space-evenly;
     flex-wrap: wrap;
     gap: 1vw;
 }
@@ -118,7 +129,7 @@ main {
     --bs-btn-font-size: 1rem;
     --bs-btn-padding-x: 0.25rem;
     --bs-btn-padding-y: 0.125rem;
-    --bs-btn-color: black;
+    --bs-btn-color: white;
     --bs-btn-border-color: black;
     --bs-btn-hover-color: black;
     --bs-btn-hover-bg: #0dcaf0;
@@ -140,7 +151,7 @@ main {
     margin-bottom: 3vh;
 }
 
-.card {
+.card-medium {
     background-color: rgba(255, 255, 255, 0.837);
     align-items: center;
     margin-bottom: 3vh;
@@ -148,17 +159,16 @@ main {
     
 }
 
-.card:hover {
+.card-medium:hover {
     transform: scale(1.1);
-    transition: all 2s;
+    transition: all 1s;
     border: solid 3px #0dcaf0;
 }
 
 
 .card-body {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
 
 }
@@ -174,8 +184,9 @@ main {
     justify-content: space-between;
 }
 
-.card img {
+.card-medium img {
     width: 97%;
+    aspect-ratio: 1/0.65;
 }
 
 .card-text {
@@ -193,6 +204,7 @@ main {
 
 footer {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     background-color: #0dcaf0;
@@ -210,9 +222,15 @@ footer {
     width: 3em;
 }
 
+.footer1 {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-/*////////////////////////////////////////////CONTACT///////////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////////////////CONTACT/////////////////////////////////////////////////////////////*/
 
 .formulario {
     width: 80%;
@@ -231,7 +249,7 @@ footer {
 
 .btn-info:hover {
     transform: scale(1.2);
-    transition: all 2s;
+    transition: all 1s;
 }
 
 textarea {
@@ -246,22 +264,60 @@ table, tr, th, td {
     border-collapse: collapse;
 }
 
+td,th {
+    width: 33%;
+    text-align: center;
+}
+
 .table {
     margin-bottom: 0;
 }
 
 .table-info {
-    --bs-table-bg: #cff4fcb1;
+    --bs-table-bg: #cff4fcd4;
+    width: 90%;
 }
 
 .main-title-form {
     background-color: #0e93ae !important;
+    font-size: x-large;
 }
 
-.titulo-secundario {
-    font-weight:400;
+
+/*/////////////////////////////////////////////////////DETAILS/////////////////////////////////////////////////////////////////*/
+
+.card-container-giant {
+    justify-content: space-around;
+    width: 100%;
+    min-height: 60vh;
+    margin-top: 10vh;
 }
 
+.card-giant {
+    background-color: rgba(255, 255, 255, 0.837);
+    padding-bottom: 3vh;
+    padding-top: 3vh;
+    border: solid 3px #0dcaf0;
+}
+
+.card-title {
+    color: #08829a;
+    font-weight: bold;
+}
+
+.span-giant {
+    color: #08829a;
+    font-weight: bold;
+}
+
+.foto-descripcion {
+    justify-content: space-around;
+}
+
+.container-img-giant {
+    display: flex;
+    align-items: center;
+}
 
 
 /*/////////////////////////////////////////////////////MEDIA QUERY//////////////////////////////////////////////////////////////*/
@@ -276,21 +332,58 @@ table, tr, th, td {
     .formulario {
         width: 40%;
     }
+
+    main {
+        background-image: url(../images/fiesta.jpg);
+        background-size: cover;
+        background-position: bottom;
+    }
+
+    .btn-fondo-blanco {
+        --bs-btn-color: black;
+    }
 }
 
+
 @media (min-width: 1024px) and (max-width: 1440px){
-    .card {
+    .filtro-categorias {
+        flex-direction: row;  
+    }
+
+    .card-medium {
         width: 15rem;
     }
 }
 
 @media (min-width: 1440px){
-    .card {
-        width: 20rem;
+
+    main, .btn-fondo-blanco {
+        font-size: 120%;
+    }
+
+    .nav-link {
+        font-size: 160% !important;
     }
 
     .filtro-categorias {
         flex-direction: row;  
+    }
+
+    .card-medium {
+        width: 20rem;
+    }
+
+    h1{
+        font-size: 200%;
+    }
+
+    h5 {
+        font-size: 120%;
+        padding-bottom: 1vh;
+    }
+
+    .btn-outline-light {
+        font-size: 105%;
     }
 }
 
